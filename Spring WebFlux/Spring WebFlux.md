@@ -1,6 +1,5 @@
 # 1.Spring WebFlux
 ## 1.1介绍
-### 1.1.1为什么需要一个新的Web框架?
 
 Spring框架中的原始Web框架，即Spring Web MVC,是为了Servlet API 与Servlet 容器所构建的。
 响应式Web框架-Web Flux将在随后的5.0版本被添加进Spring框架(注:目前已经添加了)。
@@ -10,6 +9,20 @@ SpringWebFlux是一个完全的非阻塞的，并且支持[响应式流](http://
 这两个Web框架的名字与他们源代码模块的名称保持一致(即[Spring-webmvc](https://github.com/spring-projects/spring-framework/tree/master/spring-webmvc)与[spring-webflux](https://github.com/spring-projects/spring-framework/tree/master/spring-webflux))
 ，他们将在Spring框架中并存。每个Web模块都是可选项。应用程序可以使用他们当中的一个模块，或者在某些
 情况下，两者会同时运用到，举个例子，使用响应式Web客户端的Spring MVC控制器(controllers)。
+
+### 1.1.1为什么需要一个新的Web框架?
+
+一部分的原因是需要一个无阻塞的Web栈来并发的处理少量线程，并用较少的硬件资源进行扩展。
+Servlet3.1 确实为无阻塞I/O 提供了一份API。但是，使用它让你远离剩下的Servlet API--
+那些在规范上同步(例如Filter,Servlet)或是阻塞(例如getParameter,getPart)的API。
+这是一个新的通用API(可以跨域任何运行时非阻塞的基础)的动机。很重要的一点还在于诸如Netty这样的
+服务器，已经很好的在异步非阻塞的领域发挥作用并得到认可了。
+
+另一部分的原因是函数式编程。就像Java5中增加了注解特性创造了机会一样-例如带注解的REST CONTROLLER
+(`@Controller`,`RestController`)或单元测试(`@Test`)。Java8添加的lambda表达式为Java8的函数式
+API 创造了机会。对于非阻塞应用以及链式调用风格的api来说，这是一个福音，正如CompletableFuture 与 ReactiveX
+所推广的那样，它允许声明式的组合异步逻辑。在编程模型层面，Java8使Spring Web Flux能够同时提供函数式的Web端点与
+带注解的控制器。
 
 ### 1.1.2 响应式:是什么？为什么？
 
