@@ -19,7 +19,7 @@ Servlet3.1 确实为无阻塞I/O 提供了一份API。但是，使用它让你�
 服务器，已经很好的在异步非阻塞的领域发挥作用并得到认可了。
 
 另一部分的原因是函数式编程。就像Java5中增加了注解特性创造了机会一样-例如带注解的REST风格控制器
-(`@Controller`,`RestController`)或单元测试(`@Test`)。Java8添加的lambda表达式为Java8的函数式
+(`@Controller`,`@RestController`)或单元测试(`@Test`)。Java8添加的lambda表达式为Java8的函数式
 API 创造了机会。对于非阻塞应用以及链式调用风格的api来说，这是一个福音，正如`CompletableFuture` 与 `ReactiveX`
 所推广的那样，它允许声明式的组合异步逻辑。在编程模型层面，Java8使Spring Web Flux能够同时提供函数式的Web端点与
 带注解的控制器。
