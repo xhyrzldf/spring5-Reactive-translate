@@ -2,7 +2,7 @@
 ## 1.1介绍
 ### 1.1.1为什么需要一个新的Web框架?
 
-Spring框架中的原始Web框架，即SpringWeb,是为了Servlet API 与Servlet 容器所构建的。
+Spring框架中的原始Web框架，即Spring Web MVC,是为了Servlet API 与Servlet 容器所构建的。
 响应式Web框架-Web Flux将在随后的5.0版本被添加进Spring框架(注:目前已经添加了)。
 SpringWebFlux是一个完全的非阻塞的，并且支持[响应式流](http://www.reactive-streams.org/)
 背压的框架，运行在例如Netty,Undertow和Servlet 3.1+容器这样的非阻塞服务器上。
