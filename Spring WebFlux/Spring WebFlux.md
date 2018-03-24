@@ -65,6 +65,17 @@ WebFlux 需要`Reactor`作为核心依赖，但是它可以通过`Reactive Strea
 
 ### 1.1.4 编程模型
 
+`Spring-Web`模块包含了`Spring WebFlux`的响应式基础组件，包括Http抽象，受支持的服务器的
+响应式流的适配器，解码器，以及可以与Servlet API相媲美但具有非阻塞协议的核心`Web Handler` API。
+
+在这样的基础上`Spring WebFlux`提供了两种编程模型可供选择
+- `注解控制器`-与`Spring MVC`保持一致，并基于`spring-web`模块中的相同注释。
+`Spring MVC`与`Spring WebFlux`控制器都支持响应式(`Reactor`,`RxJava`)返回类型，因此很难将他们区分开。
+一个显著的区别是`Spring WebFlux`也支持响应式(`@RequestBody`)参数。
+- `函数式终端`--基于lambda表达式的轻量级的函数编程模型。把它想象成一个小型的库或者是一组工具，可以
+让应用用来路由和处理请求。与注解控制器最大的不同是应用程序负责从头到尾的请求处理，而注解控制器是通过注解声明意图然后
+被回调。
+
 ### 1.1.5 选择一个Web框架
 
 ### 1.1.6 选择一个服务器
