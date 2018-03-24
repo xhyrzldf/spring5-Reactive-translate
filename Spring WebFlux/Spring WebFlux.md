@@ -46,6 +46,23 @@ UI控制器对鼠标事件做出的响应等等。从这个意义上来说，非
 ```
 ### 1.1.3 响应式编程 API
 
+`Reactive Streams`(注:一种响应式的类库)在互操作性方面扮演了很重要的角色。使用`Reactive Streams`对类库以及基础组件是很有意思的，
+不过作为应用程序来说用处不大，因为它太低级了。应用程序需要的是等级更高，功能更丰富的
+函数式API来组合异步逻辑-就像Java8中的Stream API一样，但不仅仅是只适用于集合。这就是
+响应式流类库所扮演的角色。
+
+`Reactor`(注：一种响应式的类库)是Spring Web Flux所选择的响应式类库。它提供了
+`Mono`与`Flux` 的API 通过与`ReactiveX`[操作符](http://reactivex.io/documentation/operators.html)
+相对应的丰富的集合操作符来操作诸如0..1以及0..N序列的数据。`Reactor`是一个
+响应流类库因此它的所有操作符都支持无阻塞背压。`Reactor`十分关注Java服务端。它是与Spring密切
+合作开发的。
+
+WebFlux 需要`Reactor`作为核心依赖，但是它可以通过`Reactive Streams`与其他响应流类库进行互操作。
+作为一般规则，WebFlux API接口一个普通的Publisher作为输入，在内部将其适配成`Reactor`类型，操作完成后，
+然后返回Flux或Mono作为输出。因此你可以传递任何Publisher作为输入，并且对输出结果进行操作，但你需要
+调整(适配)输出结果以供其他响应式类库使用。例如注解控制器，WebFlux显式的进行适配以供`RxJava`或其他响应式的
+类库使用。点击[响应式类库](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-reactive-libraries)查看更多细节。
+
 ### 1.1.4 编程模型
 
 ### 1.1.5 选择一个Web框架
